@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final.jar" sourcepath="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final-sources.jar">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/javadoc/netty-all-4.1.21.Final-javadoc.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/MEGA/lib/jtorrent2/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
