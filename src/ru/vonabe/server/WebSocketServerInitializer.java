@@ -27,8 +27,6 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.util.CharsetUtil;
-import io.netty.util.concurrent.DefaultEventExecutorGroup;
-import io.netty.util.concurrent.EventExecutorGroup;
 
 public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel> {
 
@@ -38,7 +36,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
     // 1. define a separate thread pool to execute handlers with
     //    slow business logic. e.g database operation
     // ===========================================================
-    final public static EventExecutorGroup group = new DefaultEventExecutorGroup(1500); //thread pool of 1500
+//    final public static EventExecutorGroup group = new DefaultEventExecutorGroup(1500); //thread pool of 1500
 
 	public WebSocketServerInitializer(SslContext sslCtx) {
 		this.sslCtx = sslCtx;
@@ -64,7 +62,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 							.addLast(new HttpObjectAggregator(65536))
 							.addLast(new HttpResponseEncoder())
 							.addLast(new WebSocketServerProtocolHandler(WEBSOCKET_PATH))
-							.addLast(group, "business_logic", new WebSocketFrameHandler());
+							.addLast("business_logic", new WebSocketFrameHandler());
 							pipeline.remove("protocol_verify");
 							out.add(buf);
 					}else if(parse.contains("GET /")){
@@ -116,7 +114,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 							.addLast(new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()))
 							.addLast(new StringDecoder(CharsetUtil.UTF_8))
 							.addLast(new StringEncoder(CharsetUtil.UTF_8))
-							.addLast(group, "business_logic", new SocketFrameHandler());
+							.addLast("business_logic", new SocketFrameHandler());
 						out.add(buf);
 					}
 

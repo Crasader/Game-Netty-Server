@@ -2,7 +2,6 @@ package ru.vonabe.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.ReferenceCountUtil;
 
 public class SocketFrameHandler extends SimpleChannelInboundHandler<String> {
 
@@ -20,8 +19,9 @@ public class SocketFrameHandler extends SimpleChannelInboundHandler<String> {
 	public void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
 //		System.out.println("SocketFrameHandler channelRead: *******\n"+msg+"\n*******");
 //		String message = ((ByteBuf)msg).toString();
-		System.out.println("SocketFrameHandler channelRead: "+msg);
-		ReferenceCountUtil.release(msg);
+//		System.out.println("SocketFrameHandler channelRead: "+msg);
+		Start.queue.addSessionToProcess(msg);
+//		ReferenceCountUtil.release(msg);
 	}
 
 	@Override

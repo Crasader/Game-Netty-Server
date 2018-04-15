@@ -1,7 +1,5 @@
 package ru.vonabe.server;
 
-import java.util.Locale;
-
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
@@ -25,8 +23,9 @@ public class WebSocketFrameHandler extends SimpleChannelInboundHandler<WebSocket
 	protected void channelRead0(ChannelHandlerContext arg0, WebSocketFrame frame) throws Exception {
 		if(frame instanceof TextWebSocketFrame){
 			String request = ((TextWebSocketFrame)frame).text();
-			arg0.channel().writeAndFlush(new TextWebSocketFrame(request.toUpperCase(Locale.US)));
-			System.out.println("WebSocketFrameHandler channelRead0: "+request);
+//			arg0.channel().writeAndFlush(new TextWebSocketFrame(request.toUpperCase(Locale.US)));
+//			System.out.println("WebSocketFrameHandler channelRead0: "+request);
+			Start.queue.addSessionToProcess(request);
 		}else{
 			String message = "unsupported frame type: " + frame.getClass().getName();
 			throw new UnsupportedOperationException(message);
