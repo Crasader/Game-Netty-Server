@@ -35,9 +35,9 @@ public class ProtocolDetect extends ByteToMessageDecoder {
 
 	interface ProtocolDetectInterface {
 		void websocket(ChannelPipeline pipeline);
+		void socket(ChannelPipeline pipeline);
 		void http_get(ChannelPipeline pipeline);
 		void http_post(ChannelPipeline pipeline);
-		void socket(ChannelPipeline pipeline);
 	}
 
 }

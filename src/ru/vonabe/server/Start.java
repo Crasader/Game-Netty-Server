@@ -37,9 +37,10 @@ import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.util.SelfSignedCertificate;
 import io.netty.util.CharsetUtil;
+import ru.vonabe.logic.GameLogicHandler;
 import ru.vonabe.server.ProtocolDetect.ProtocolDetectInterface;
 
-public class Start implements ProtocolDetectInterface{
+public class Start implements ProtocolDetectInterface {
 
 	public static String PROTO_WEBSOCKET = "/websocket", PROTO_GET = "GET /", PROTO_POST = "POST";
 
@@ -48,11 +49,11 @@ public class Start implements ProtocolDetectInterface{
 	public static final boolean SSL = System.getProperty("ssl") != null;
 	public static final int PORT = Integer.parseInt(System.getProperty("port", SSL ? "8443" : "8080"));
 	public static SslContext sslcontext = null;
-	public static ReadQueueHandler queue = null;
+	public static GameLogicHandler gamelogic = null;
 
-	public Start(){
+	public Start() {
 
-		queue = new ReadQueueHandler(4);
+		gamelogic = new GameLogicHandler(4);
 
 		EventLoopGroup boss = new NioEventLoopGroup(1);
 		EventLoopGroup worker = new NioEventLoopGroup(4);
@@ -77,13 +78,17 @@ public class Start implements ProtocolDetectInterface{
 			System.out.println("Open your web browser and navigate to " + (SSL? "https" : "http") + "://127.0.0.1:" + PORT + '/');
 			ch.closeFuture().sync();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			System.out.println("finally worker group shutdown");
 			boss.shutdownGracefully();
 			worker.shutdownGracefully();
 		}
+
+	}
+
+	private ChannelHandler protocolDetect(){
+		return new ProtocolDetect(this);
 	}
 
 	@Override
@@ -158,12 +163,6 @@ public class Start implements ProtocolDetectInterface{
 
 	}
 
-
-	private ChannelHandler protocolDetect(){
-		return new ProtocolDetect(this);
-	}
-
-
 	public void enabledSSL(){
 		try {
 			SelfSignedCertificate ssc = new SelfSignedCertificate();
@@ -180,8 +179,6 @@ public class Start implements ProtocolDetectInterface{
 	public static void main(String[] args) throws SSLException {
 		new Start();
 	}
-
-
 
 
 }

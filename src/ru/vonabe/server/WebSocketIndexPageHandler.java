@@ -4,7 +4,6 @@ import static io.netty.handler.codec.http.HttpMethod.GET;
 import static io.netty.handler.codec.http.HttpResponseStatus.BAD_REQUEST;
 import static io.netty.handler.codec.http.HttpResponseStatus.FORBIDDEN;
 import static io.netty.handler.codec.http.HttpResponseStatus.NOT_FOUND;
-import static io.netty.handler.codec.http.HttpResponseStatus.OK;
 import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 import io.netty.buffer.ByteBuf;
@@ -48,14 +47,14 @@ public class WebSocketIndexPageHandler extends SimpleChannelInboundHandler<FullH
 
         // Send the index page
         if ("/".equals(req.uri()) || "/index.html".equals(req.uri())) {
-            String webSocketLocation = getWebSocketLocation(ctx.pipeline(), req, websocketPath);
-            ByteBuf content = WebSocketServerIndexPage.getContent(webSocketLocation);
-            FullHttpResponse res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
+//            String webSocketLocation = getWebSocketLocation(ctx.pipeline(), req, websocketPath);
+//            ByteBuf content = WebSocketServerIndexPage.getContent(webSocketLocation);
+//            FullHttpResponse res = new DefaultFullHttpResponse(HTTP_1_1, OK, content);
 
-            res.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/html; charset=UTF-8");
-            HttpUtil.setContentLength(res, content.readableBytes());
+//            res.headers().set(HttpHeaderNames.CONTENT_TYPE, "text/html; charset=UTF-8");
+//            HttpUtil.setContentLength(res, content.readableBytes());
 
-            sendHttpResponse(ctx, req, res);
+//            sendHttpResponse(ctx, req, res);
         } else {
             sendHttpResponse(ctx, req, new DefaultFullHttpResponse(HTTP_1_1, NOT_FOUND));
         }

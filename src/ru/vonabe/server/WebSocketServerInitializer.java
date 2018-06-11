@@ -78,7 +78,7 @@ public class WebSocketServerInitializer extends ChannelInitializer<SocketChannel
 
 										String message =
 												"<head>"+
-												"<title>LordyServer</title>"+
+												"<title>GameServer</title>"+
 												"<p> Hello World! </p>"+
 												"</head>";
 

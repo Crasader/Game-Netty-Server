@@ -10,5 +10,7 @@
 	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/javadoc/netty-all-4.1.21.Final-javadoc.jar"/>
 	<classpathentry exported="true" kind="lib" path="F:/MEGA/lib/jtorrent2/slf4j-api-1.6.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/MEGA/lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/vonabe/Desktop/libgdx-game/lib/gdx-math-1.9.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

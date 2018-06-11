@@ -2,6 +2,9 @@ package ru.vonabe.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import ru.vonabe.packet.FastPacket;
+import ru.vonabe.packet.Packet;
+import ru.vonabe.packet.PacketManager;
 
 public class SocketFrameHandler extends SimpleChannelInboundHandler<String> {
 
@@ -20,7 +23,14 @@ public class SocketFrameHandler extends SimpleChannelInboundHandler<String> {
 //		System.out.println("SocketFrameHandler channelRead: *******\n"+msg+"\n*******");
 //		String message = ((ByteBuf)msg).toString();
 //		System.out.println("SocketFrameHandler channelRead: "+msg);
-		Start.queue.addSessionToProcess(msg);
+
+		FastPacket fast = new FastPacket(msg);
+		Packet packet = PacketManager.getPacket(fast.getAction());
+		packet.setChannel(ctx);
+		packet.setData(fast);
+
+		Start.gamelogic.addSessionToProcess(packet);
+
 //		ReferenceCountUtil.release(msg);
 	}
 
