@@ -2,15 +2,13 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final.jar" sourcepath="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final-sources.jar">
-		<attributes>
-			<attribute name="source_encoding" value="UTF-8"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/jar/all-in-one/netty-all-4.1.21.Final-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/vonabe/Desktop/netty-4.1.21.Final/javadoc/netty-all-4.1.21.Final-javadoc.jar"/>
-	<classpathentry exported="true" kind="lib" path="F:/MEGA/lib/jtorrent2/slf4j-api-1.6.4.jar"/>
-	<classpathentry exported="true" kind="lib" path="F:/MEGA/lib/json-simple-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Users/vonabe/Desktop/libgdx-game/lib/gdx-math-1.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-1.9.8.jar"/>
+	<classpathentry kind="lib" path="lib/gdx-math-1.9.4.jar"/>
+	<classpathentry kind="lib" path="lib/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/netty-all-4.1.21.Final-javadoc.jar"/>
+	<classpathentry kind="lib" path="lib/netty-all-4.1.21.Final-sources.jar"/>
+	<classpathentry kind="lib" path="lib/netty-all-4.1.21.Final.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.6.4.jar"/>
+	<classpathentry kind="lib" path="lib/sqlite-jdbc-3.23.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
